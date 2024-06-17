@@ -10,7 +10,7 @@ import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
   imports: [
     CommonModule,
     TracksRoutingModule,
-    TracksPageComponent
+    TracksPageComponent,
   ]
 })
 export class TracksModule { }
