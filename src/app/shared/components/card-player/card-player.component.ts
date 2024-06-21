@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { TracksModel } from '@core/models/tracks.model';
 import { ImgBrokenDirective } from '@shared/directives/img-broken.directive';
+import { MultimediaService } from '@shared/services/multimedia.service';
 
 @Component({
   selector: 'app-card-player',
@@ -19,4 +20,11 @@ export class CardPlayerComponent {
     url: '',
     cover: '',
   };
+
+  constructor(private multimediaService: MultimediaService) { }
+
+  sendPlay(track: TracksModel): void {
+    this.multimediaService.callback.emit(track)
+
+  }
 }
