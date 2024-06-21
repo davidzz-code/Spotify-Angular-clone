@@ -12,18 +12,15 @@ import { Subscription } from 'rxjs';
   styleUrl: './tracks-page.component.css'
 })
 export class TracksPageComponent implements OnInit, OnDestroy{
-  mockTrackList: Array<TracksModel> = []
-
   trendingTracks: Array<TracksModel> = []
   randomTracks: Array<TracksModel> = []
-
   listObservers$: Array<Subscription> = []
 
   constructor(private trackService: TrackService) { }
 
   ngOnInit(): void {
-    this.trackService.getAllTracks$().subscribe(response => {
-      console.log('RESPONSE:', response)
+    this.trackService.getAllTracks$().subscribe((response: TracksModel[]) => {
+      this.trendingTracks = response
     })
   }
 

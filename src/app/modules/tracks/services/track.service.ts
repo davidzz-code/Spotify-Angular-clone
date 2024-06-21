@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TracksModel } from '@core/models/tracks.model';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,5 +14,6 @@ export class TrackService {
 
   getAllTracks$(): Observable<any> {
     return this.httpClient.get(`${this.URL}/tracks`)
+      .pipe(map(({ data }: any) => data))
   }
 }
