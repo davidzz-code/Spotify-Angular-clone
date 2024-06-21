@@ -16,4 +16,9 @@ export class TrackService {
     return this.httpClient.get(`${this.URL}/tracks`)
       .pipe(map(({ data }: any) => data))
   }
+
+  getAllRandom$(): Observable<any> {
+    return this.httpClient.get(`${this.URL}/tracks`)
+      .pipe(map(({ data }: any) => data.reverse()))
+  }
 }

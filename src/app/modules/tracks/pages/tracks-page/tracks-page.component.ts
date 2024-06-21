@@ -22,6 +22,10 @@ export class TracksPageComponent implements OnInit, OnDestroy{
     this.trackService.getAllTracks$().subscribe((response: TracksModel[]) => {
       this.trendingTracks = response
     })
+
+    this.trackService.getAllRandom$().subscribe((response: TracksModel[]) => {
+      this.randomTracks = response
+    })
   }
 
   ngOnDestroy(): void {
