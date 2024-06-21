@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '@modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginPageComponent {
   formLogin: FormGroup = new FormGroup({});
 
-  constructor() { }
+  constructor(private authServices: AuthService) { }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -31,7 +32,7 @@ export class LoginPageComponent {
   }
 
   sendLogin(): void {
-    const body = this.formLogin.value;
-    console.log(body)
+    const {email, password} = this.formLogin.value;
+    this.authServices.sendCredentials(email, password)
   }
 }
