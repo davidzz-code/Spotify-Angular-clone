@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@modules/auth/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +15,7 @@ export class LoginPageComponent {
   errorSession: Boolean = false;
   formLogin: FormGroup = new FormGroup({});
 
-  constructor(private authServices: AuthService) { }
+  constructor(private authServices: AuthService, private cookie: CookieService) { }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -37,6 +38,8 @@ export class LoginPageComponent {
     this.authServices.sendCredentials(email, password).subscribe(
       responseOk => {
         console.log('sesión iniciada perfe')
+        const { data, tokenSession } = responseOk;
+        this.cookie.set('token', tokenSession, 4, '/')
         this.errorSession = false
       },
       error => {
