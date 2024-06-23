@@ -107,3 +107,10 @@
 input.ng-invalid.ng-touched {
   border: solid 2px red !important
 }
+
+.login-auth-page .login-auth-form .error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+}

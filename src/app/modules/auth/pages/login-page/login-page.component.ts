@@ -11,6 +11,7 @@ import { AuthService } from '@modules/auth/services/auth.service';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
+  errorSession: Boolean = false;
   formLogin: FormGroup = new FormGroup({});
 
   constructor(private authServices: AuthService) { }
@@ -33,6 +34,16 @@ export class LoginPageComponent {
 
   sendLogin(): void {
     const {email, password} = this.formLogin.value;
-    this.authServices.sendCredentials(email, password)
+    this.authServices.sendCredentials(email, password).subscribe(
+      responseOk => {
+        console.log('sesión iniciada perfe')
+        this.errorSession = false
+      },
+      error => {
+        console.log('ERROR CON TU USER O PASSWORD')
+        this.errorSession = true
+
+      }
+    )
   }
 }
