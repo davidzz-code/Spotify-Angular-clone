@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { TracksModel } from '@core/models/tracks.model';
 import { TrackService } from '@modules/tracks/services/track.service';
-import { Subscription } from 'rxjs';
+import { Subscription, firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tracks-page',
@@ -19,13 +19,12 @@ export class TracksPageComponent implements OnInit, OnDestroy{
   constructor(private trackService: TrackService) { }
 
   ngOnInit(): void {
-    this.trackService.getAllTracks$().subscribe((response: TracksModel[]) => {
-      this.trendingTracks = response
-    })
+    this.loadDataAll();
+  }
 
-    this.trackService.getAllRandom$().subscribe((response: TracksModel[]) => {
-      this.randomTracks = response
-    })
+  async loadDataAll(): Promise<any> {
+    this.trendingTracks = await firstValueFrom(this.trackService.getAllTracks$())
+    this.randomTracks = await firstValueFrom(this.trackService.getAllRandom$())
   }
 
   ngOnDestroy(): void {

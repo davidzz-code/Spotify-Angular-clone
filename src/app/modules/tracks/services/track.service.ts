@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,11 +14,18 @@ export class TrackService {
 
   getAllTracks$(): Observable<any> {
     return this.httpClient.get(`${this.URL}/tracks`)
-      .pipe(map(({ data }: any) => data))
+      .pipe(
+        map(({ data }: any) => data),
+        catchError((err) => {
+          const {status, statusText} = err
+          console.table([status, statusText])
+          return of([])
+        })
+      )
   }
 
   getAllRandom$(): Observable<any> {
     return this.httpClient.get(`${this.URL}/tracks`)
-      .pipe(map(({ data }: any) => data.reverse()))
+      .pipe(map(({ data }: any) => data.reverse()),)
   }
 }
