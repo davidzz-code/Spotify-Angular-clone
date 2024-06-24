@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import * as dataRaw from '../../../data/tracks.json';
+import { Component, Input } from '@angular/core';
 import { TracksModel } from '@core/models/tracks.model';
 import { OrderListPipe } from '@shared/pipe/order-list.pipe';
 import { DurationPipe } from '@shared/pipe/duration.pipe';
@@ -13,12 +12,11 @@ import { DurationPipe } from '@shared/pipe/duration.pipe';
   styleUrl: './play-list-body.component.css'
 })
 export class PlayListBodyComponent {
-  tracks: TracksModel[] = [];
+  @Input() tracks: TracksModel[] = [];
   optionSort: {property: string | null, order: string} = {property: null, order: 'asc'};
 
   ngOnInit() {
-    const { data }: any = (dataRaw as any).default;
-    this.tracks = data;
+
   }
 
   changeSort(property: string): void {
