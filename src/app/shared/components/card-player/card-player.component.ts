@@ -24,7 +24,6 @@ export class CardPlayerComponent {
   constructor(private multimediaService: MultimediaService) { }
 
   sendPlay(track: TracksModel): void {
-    this.multimediaService.callback.emit(track)
-
+    this.multimediaService.trackInfo$.next(track)
   }
 }
