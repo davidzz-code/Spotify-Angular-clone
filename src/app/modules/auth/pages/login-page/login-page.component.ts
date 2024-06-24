@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@modules/auth/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -15,7 +16,7 @@ export class LoginPageComponent {
   errorSession: Boolean = false;
   formLogin: FormGroup = new FormGroup({});
 
-  constructor(private authServices: AuthService, private cookie: CookieService) { }
+  constructor(private authServices: AuthService, private cookie: CookieService, private router: Router) { }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -37,10 +38,10 @@ export class LoginPageComponent {
     const {email, password} = this.formLogin.value;
     this.authServices.sendCredentials(email, password).subscribe(
       responseOk => {
-        console.log('sesión iniciada perfe')
         const { data, tokenSession } = responseOk;
         this.cookie.set('token', tokenSession, 4, '/')
-        this.errorSession = false
+        this.errorSession = false;
+        this.router.navigate(['/', 'tracks']);
       },
       error => {
         console.log('ERROR CON TU USER O PASSWORD')
