@@ -15,11 +15,7 @@ export class SearchComponent {
   src: string = '';
   callSearch(term: string): void {
     if (term.length >= 3) {
-      console.log('hola');
       this.callbackData.emit(term);
     }
-
-
   }
-
 }
