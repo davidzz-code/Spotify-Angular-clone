@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { TracksModel } from '@core/models/tracks.model';
+import { DurationPipe } from '@shared/pipe/duration.pipe';
 import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 
 @Injectable({
@@ -15,12 +16,12 @@ export class MultimediaService {
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00')
   public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject('-00:00')
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
+  public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
 
   constructor() {
     this.audio = new Audio();
     this.trackInfo$.subscribe(responseOk => {
       if (responseOk) {
-        console.log('Reproduciendo: ', responseOk)
         this.setAudio(responseOk)
       }
     })
@@ -37,7 +38,6 @@ export class MultimediaService {
   }
 
   private setPlayerStatus = (state: any) => {
-    console.log('Estado del reproductor: ', state)
     switch (state.type) {
       case 'play':
         this.playerStatus$.next('play')
@@ -58,6 +58,12 @@ export class MultimediaService {
     const { duration, currentTime } = this.audio
     this.setTimeElapsed(currentTime)
     this.setTimeRemaining(duration, currentTime)
+    this.setPercentage(duration, currentTime)
+  }
+
+  private setPercentage(duration: number, currentTime: number): void {
+    const percentage = (currentTime * 100) / duration;
+    this.playerPercentage$.next(percentage);
   }
 
   private setTimeElapsed(currentTime: number): void {
@@ -90,5 +96,12 @@ export class MultimediaService {
 
   public togglePlayer(): void {
     (this.audio.paused) ? this.audio.play() : this.audio.pause()
+  }
+
+  public seekAudio(percentage: number): void {
+    const { duration } = this.audio
+    const percentageToSecond = (percentage * duration) / 100
+    this.audio.currentTime = percentageToSecond
+
   }
 }
