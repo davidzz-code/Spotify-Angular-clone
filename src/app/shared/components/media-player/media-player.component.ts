@@ -14,10 +14,14 @@ import { Subscription } from 'rxjs';
 export class MediaPlayerComponent implements OnInit, OnDestroy  {
 
   listObservers$: Array<Subscription> = []
+  state: string = 'paused'
   constructor(public multimediaService: MultimediaService) { }
 
   ngOnInit() {
+    const observer1$ = this.multimediaService.playerStatus$
+      .subscribe((status: string) => this.state = status)
 
+    this.listObservers$ = [observer1$]
   }
 
   ngOnDestroy(): void {
