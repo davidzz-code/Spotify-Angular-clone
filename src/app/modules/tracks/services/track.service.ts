@@ -26,6 +26,9 @@ export class TrackService {
 
   getAllRandom$(): Observable<any> {
     return this.httpClient.get(`${this.URL}/tracks`)
-      .pipe(map(({ data }: any) => data.reverse()),)
+      .pipe(map(({ data }: any) => {
+        const randomData = data.sort(() => Math.random() - 0.5);
+        return randomData;
+      }))
   }
 }
