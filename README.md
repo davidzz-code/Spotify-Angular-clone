@@ -1,15 +1,11 @@
 # Spotify Clone
 
-Este es un proyecto de clon de Spotify, realizado a través de un curso de Udemy impartido por Leifer Mendez. Es mi primer proyecto utilizando Angular para aprender y familiarizarme con este framework.
-
-## Descripción
-
-Incluye algunas de las funcionalidades básicas de la aplicación original, como la reproducción de canciones, un buscador y más. La interfaz de usuario ha sido diseñada para parecerse lo más posible a la aplicación original de Spotify.
+Este es un proyecto clon de Spotify, realizado a través de un curso de Udemy. Es mi primer proyecto utilizando Angular para aprender y familiarizarme con este framework.
 
 ## Características
 
-- Reproducción de música, incluyendo la posibilidad de saltar en la canción usando la barra de tiempo.
-- Navegación entre tres pestañas: “Home”, “Tu Biblioteca” y “Buscar”.
+- Reproducción de música con saltos precisos usando la barra de tiempo.
+- Navegación entre las pestañas: “Home”, “Tu Biblioteca” y “Buscar”.
 - Sistema de búsqueda funcional en la pestaña “Buscar”.
 - Sistema de inicio de sesión que guarda el token de sesión en una cookie.
 
@@ -60,4 +56,4 @@ Para ejecutar este proyecto en tu máquina local, sigue estos pasos:
 
 ## Créditos
 
-Este proyecto ha sido desarrollado como parte del curso de Udemy "Curso Completo de Angular" impartido por Leifer Mendez. Agradezco al instructor por proporcionar una base sólida y recursos útiles para aprender Angular.
+Este proyecto ha sido desarrollado como parte del curso de Udemy "Angular desde 0" impartido por Leifer Mendez.
