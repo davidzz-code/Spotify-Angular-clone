@@ -14,7 +14,7 @@ export class SearchComponent {
 
   src: string = '';
   callSearch(term: string): void {
-    if (term.length >= 3) {
+    if (term) {
       this.callbackData.emit(term);
     }
   }
