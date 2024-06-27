@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { SearchComponent } from '@modules/history/components/search/search.component';
 import { SearchService } from '@modules/history/services/search.service';
 import { SharedModule } from '@shared/shared.module';
-import { Observable, filter, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-history-page',
@@ -13,10 +13,13 @@ import { Observable, filter, of } from 'rxjs';
   styleUrl: './history-page.component.css'
 })
 export class HistoryPageComponent {
-  listResults$: Observable<any> = of([])
-  constructor(private searchService: SearchService) { }
+  listResults$: Observable<any>;
+
+  constructor(private searchService: SearchService) {
+    this.listResults$ = this.searchService.searchTracks$('');
+  }
 
   receiveData(event: string): void {
-    this.listResults$ = this.searchService.searchTracks$(event)
+    this.listResults$ = this.searchService.searchTracks$(event);
   }
 }

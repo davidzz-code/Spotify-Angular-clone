@@ -22,7 +22,7 @@ export class PlayListBodyComponent {
   changeSort(property: string): void {
     const { order } = this.optionSort;
     this.optionSort = {
-      property: property,
+      property,
       order: order === 'asc' ? 'desc' : 'asc'
     }
   }
