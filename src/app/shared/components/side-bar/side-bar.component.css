@@ -48,3 +48,16 @@
 .side-bar__list li {
   cursor: pointer;
 }
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 26rem;
+  opacity: .8;
+}
+
+.logout-button:hover {
+  color: var(--color-1);
+  opacity: 1;
+}

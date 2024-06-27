@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-side-bar',
@@ -17,7 +18,7 @@ export class SideBarComponent implements OnInit {
 
   customOptions: Array<any> = []
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cookie: CookieService) { }
 
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
@@ -80,5 +81,10 @@ export class SideBarComponent implements OnInit {
       }
     })
     console.log($event)
+  }
+
+  logout(): void {
+    this.cookie.delete('token');
+    this.router.navigate(['/', 'auth']);
   }
 }
