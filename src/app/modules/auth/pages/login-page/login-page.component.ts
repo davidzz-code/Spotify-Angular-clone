@@ -21,11 +21,11 @@ export class LoginPageComponent {
   ngOnInit(): void {
     this.formLogin = new FormGroup(
       {
-        email: new FormControl('', [
+        email: new FormControl('test@test.com', [
           Validators.required,
           Validators.email
         ]),
-        password: new FormControl('', [
+        password: new FormControl('12345678', [
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(20),
