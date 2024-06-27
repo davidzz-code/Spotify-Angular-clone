@@ -1,27 +1,63 @@
-# Spotify
+# Spotify Clone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
+Este es un proyecto de clon de Spotify, realizado a través de un curso de Udemy impartido por Leifer Mendez. Es mi primer proyecto utilizando Angular para aprender y familiarizarme con este framework.
 
-## Development server
+## Descripción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Incluye algunas de las funcionalidades básicas de la aplicación original, como la reproducción de canciones, un buscador y más. La interfaz de usuario ha sido diseñada para parecerse lo más posible a la aplicación original de Spotify.
 
-## Code scaffolding
+## Características
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Reproducción de música, incluyendo la posibilidad de saltar en la canción usando la barra de tiempo.
+- Navegación entre tres pestañas: “Home”, “Tu Biblioteca” y “Buscar”.
+- Sistema de búsqueda funcional en la pestaña “Buscar”.
+- Sistema de inicio de sesión que guarda el token de sesión en una cookie.
 
-## Build
+## Estado del Proyecto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Actualmente, solo el frontend de la aplicación está disponible. El backend existe, pero no está desplegado en ningún servidor, por lo que las funcionalidades que dependen del backend no estarán operativas si se prueba la aplicación desde el frontend.
 
-## Running unit tests
+## Imágenes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
-## Running end-to-end tests
+![Home page](src/assets/img/home-page.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![Buscar](src/assets/img/search-page.png)
 
-## Further help
+![Tu biblioteca](src/assets/img/favorites-page.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![Login](src/assets/img/login-page.png)
+
+
+## Tecnologías Utilizadas
+
+- Angular
+- TypeScript
+- HTML
+- CSS
+
+## Instalación
+
+Para ejecutar este proyecto en tu máquina local, sigue estos pasos:
+
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/tu_usuario/spotify-clone.git
+    ```
+2. Navega al directorio del proyecto:
+    ```bash
+    cd spotify-clone
+    ```
+3. Instala las dependencias:
+    ```bash
+    npm install
+    ```
+4. Ejecuta la aplicación:
+    ```bash
+    ng serve
+    ```
+
+## Créditos
+
+Este proyecto ha sido desarrollado como parte del curso de Udemy "Curso Completo de Angular" impartido por Leifer Mendez. Agradezco al instructor por proporcionar una base sólida y recursos útiles para aprender Angular.
