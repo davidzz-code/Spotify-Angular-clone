@@ -11,7 +11,7 @@ Este es un proyecto clon de Spotify, realizado a través de un curso de Udemy. E
 
 ## Estado del Proyecto
 
-Actualmente, solo el frontend de la aplicación está disponible. El backend existe, pero no está desplegado en ningún servidor, por lo que las funcionalidades que dependen del backend no estarán operativas si se prueba la aplicación desde el frontend.
+Actualmente, solo el frontend de la aplicación está disponible. El backend existe, pero no está desplegado en ningún servidor, por lo que las funcionalidades que dependen del backend no estarán operativas si se prueba la aplicación.
 
 ## Imágenes
 
